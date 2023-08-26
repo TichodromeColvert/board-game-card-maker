@@ -1,0 +1,47 @@
+#card {
+    width: 260px;
+    height: 400px;
+    position: relative;
+    z-index: 10;
+    overflow: hidden;
+    background-color: snow;
+    .card-model {
+        width: 260px;
+        height: 400px;
+        z-index: 11;
+        position: absolute;
+        top: 0px;
+        left: 0px;
+        background-image: url(../../assets/iww/img/card-main-structure.png);
+    }
+    &.structure {
+        .card-model {
+            background-position-x: 0;
+        }
+    }
+    &.vehicle {
+        .card-model {
+            background-position-x: 260px;
+        }
+    }
+    &.research {
+        .card-model {
+            background-position-x: 520px;
+        }
+    }
+    &.project {
+        .card-model {
+            background-position-x: 780px;
+        }
+    }
+    &.discovery {
+        .card-model {
+            background-position-x: 1040px;
+        }
+    }
+    &.memorial {
+        .card-model {
+            background-position-x: 1200px;
+        }
+    }
+}

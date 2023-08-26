@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { IwwComponent } from './iww/iww.component';
+import { IwwComponent } from './games/iww/iww.component';
 
 const routes: Routes = [{
   path: 'iww'
