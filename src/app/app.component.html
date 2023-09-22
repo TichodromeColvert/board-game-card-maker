@@ -3,13 +3,13 @@
 <div i18n>Please choose a board game from the following list:</div>
 <form [formGroup]="chooseGameForm">
     <select formControlName="boardGame">
-        <option [ngValue]="null" disabled>Select a game</option>
-        <option *ngFor="let game of games" [ngValue]="game.id">{{game.name}}</option>
+        <option [value]="null" disabled>Select a game</option>
+        <option *ngFor="let game of games" [value]="game.id">{{game.name}}</option>
     </select>
 </form>
 
 <div id="card-maker-panel">
-    <router-outlet></router-outlet>
+    <router-outlet (activate)="routerActivate($event.uri)"></router-outlet>
 </div>
 
 <button id="createCard" *ngIf="chooseGameForm.valid" (click)="createCard()" i18n>Create my card!</button>

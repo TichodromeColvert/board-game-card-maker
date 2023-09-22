@@ -12,36 +12,464 @@
         position: absolute;
         top: 0px;
         left: 0px;
-        background-image: url(../../assets/iww/img/card-main-structure.png);
+        background-image: url(../../../assets/iww/img/iww-card-main-structure.png);
     }
     &.structure {
         .card-model {
             background-position-x: 0;
         }
+        .when-built-circle {
+            background-position-x: 480px;
+        }
     }
     &.vehicle {
         .card-model {
-            background-position-x: 260px;
+            background-position-x: 1300px;
+        }
+        .when-built-circle {
+            background-position-x: 400px;
         }
     }
     &.research {
         .card-model {
-            background-position-x: 520px;
+            background-position-x: 1040px;
+        }
+        .when-built-circle {
+            background-position-x: 320px;
         }
     }
     &.project {
         .card-model {
             background-position-x: 780px;
         }
+        .when-built-circle {
+            background-position-x: 240px;
+        }
     }
     &.discovery {
         .card-model {
-            background-position-x: 1040px;
+            background-position-x: 520px;
+        }
+        .when-built-circle {
+            background-position-x: 160px;
         }
     }
     &.memorial {
         .card-model {
-            background-position-x: 1200px;
+            background-position-x: 260px;
+        }
+        .when-built-circle {
+            background-position-x: 80px;
+        }
+    }
+
+    .card-name-container {
+        position: absolute;
+        right: 57px;
+        top: 33px;
+        width: 156px;
+        .card-name {
+            height:auto;
+            width: auto;
+            text-align: center;
+            color: #DDDADA;
+            text-shadow: 0 -2px 5px black;
+        }
+    }
+
+    .nb-card-container {
+        position: absolute;
+        right: 4px;
+        top: 9px;
+        width: 20px;
+        .nb-card {
+            height: auto;
+            width: auto;
+            text-align: center;
+            color: rgba(200, 200, 200, 0.7);
+            position: relative;
+            z-index: 11;
+        }
+    }
+    
+    .cost-bar-container {
+        position: absolute;
+        left: 5px;
+        top: 0px;
+        width: 89px;
+        height: 380px;
+        .cost-bar {
+            width: 42px;
+            border-radius: 0 0 14px 14px;
+            padding-bottom: 1px;
+            background: -webkit-linear-gradient(rgba(30, 30, 30, 0.6) 0%, transparent 30px),
+            url(../../../assets/iww/img/iww-backgrounds.png);
+            background: -moz-linear-gradient(rgba(30, 30, 30, 0.6) 0%, transparent 30px),
+            url(../../../assets/iww/img/iww-backgrounds.png);
+            background: -o-linear-gradient(rgba(30, 30, 30, 0.6) 0%, transparent 30px),
+            url(../../../assets/iww/img/iww-backgrounds.png);
+            background: linear-gradient(rgba(30, 30, 30, 0.6) 0%, transparent 30px),
+            url(../../../assets/iww/img/iww-backgrounds.png);
+            background-position-x: 0;
+            position: relative;
+            box-shadow: -1px 0px 1px rgba(0, 0, 0, 0.4), 0px 1px 1px rgba(0, 0, 0, 0.4), 2px 0px 2px rgba(0, 0, 0, 0.4);
+            z-index: 8;
+            overflow: hidden;
+            &.primary {
+                top: 0;
+                left: 0;
+                padding-top: 9px;
+                &:before {
+                    top: -6px;
+                }
+            }
+            &.secondary {
+                position: absolute;
+                left: 46px;
+                top: 45px;
+                padding-top: 18px;
+                &:before {
+                    top: 0;
+                }
+            }
+        }
+        &:before {
+            content: '';
+            display: inline-block;
+            height: 12px;
+            width: 33px;
+            left: 5px;
+            position: absolute;
+            z-index: 9;
+            background-image: url(../../../assets/iww/svg/cost-bar-before.svg);
+            //background: repeating-linear-gradient(to right, #31122d 0px, #31122d 2px, transparent 2px, transparent 4px, #31122d 4px, #31122d 6px, transparent 6px, transparent 8px, #31122d 8px, #31122d 10px, transparent 10px, transparent 12px, #31122d 12px);
+        }
+        .cost {
+            margin-left: auto;
+            margin-right: auto;
+            position: relative;
+            margin-bottom: 2px;
+            height: 35px;
+            width: 36px;
+            &:after {
+                content: '';
+                display: inline-block;
+                height: 31px;
+                width: 31px;
+            }
+            &.cube {
+                border-radius: 8px;
+                position: relative;
+                background: linear-gradient(rgba(10, 10, 10, 0.9) 0%, transparent 50%, rgba(235, 235, 235, 0.3) 66%);
+                &:after {
+                    border-radius: 6px;
+                    position: absolute;
+                    top: 2px;
+                    left: 2px;
+                    background-image: url(../../../assets/iww/img/iww-costs.png);
+                }
+                &.material {
+                    &:after {
+                        background-position: 0 0;
+                    }
+                }
+                &.energy {
+                    &:after {
+                        background-position: 155px 0;
+                    }
+                }
+                &.science {
+                    &:after {
+                        background-position: 124px 0;
+                    }
+                }
+                &.gold {
+                    &:after {
+                        background-position: 93px 0;
+                    }
+                }
+                &.exploration {
+                    &:after {
+                        background-position: 62px 0;
+                    }
+                }
+                &.krystallium {
+                    &:after {
+                        background-position: 31px 0;
+                    }
+                }
+            }
+            &.token {
+                border-radius: 50%;
+                background: linear-gradient(140deg, rgba(10, 10, 10, 0.9) 0%, transparent 50%, rgba(235, 235, 235, 0.3) 66%);
+                &:after {
+                    border-radius: 50%;
+                    position: absolute;
+                    top: 2px;
+                    left: 2px;
+                    background-image: url(../../../assets/iww/img/iww-tokens.png);
+                      
+                }
+                &.financier:after {
+                    background-position-x: -2px;
+                    background-size: 64px;
+                }
+                &.general:after {
+                    background-position-x: 32px;
+                    background-size: 72px;
+                }
+            }
+        }
+    }
+    .card-image-and-build-bonus {
+        position: absolute;
+        right: 0px;
+        top: 39px;
+        width: 260px;
+        height: 309px;
+        .card-image-container {
+            position: relative;
+            right: 0px;
+            top: 0px;
+            width: 260px;
+            height: 309px;
+            background: linear-gradient(rgba(0, 0, 0, 0.4) 0%, transparent 3%, transparent 97%, rgba(0, 0, 0, 0.4) 100%);
+            z-index: 3;
+        }
+        .when-built-container {
+            position: absolute;
+            left: 64px;
+            bottom: 0px;
+            width: 114px;
+            height: 42px;
+            .when-built {
+                position: relative;
+                height: 44px;
+                .when-built-circle {
+                    position: absolute;
+                    width: 74px;
+                    height: 72px;
+                    top: 16px;
+                    right: 13px;
+                    z-index: 2;
+                    border-radius: 50%;
+                    border: solid 1px rgba(0, 0, 0, 0.7);
+                    box-shadow: -1px -1px 1px white, 1px -1px 1px white, -2px -2px 0 rgba(100, 100, 100, 0.6), 2px -2px 0 rgba(100, 100, 100, 0.6);
+                    background-image: url(../../../assets/iww/img/iww-backgrounds.png);
+                }
+                .when-built-production {
+                    position: absolute;
+                    width: 121px;
+                    height: 39px;
+                    top: 0px;
+                    left: 0px;
+                    .when-built-bonus {
+                        position: absolute;
+                        height: 39px;
+                        width: 39px;
+                        background: linear-gradient(#E2E2E2 0%, #6B6B6B 100%);
+                        border-radius: 50%;
+                        box-shadow: 1px -1px 1px rgba(45, 45, 45, 0.6), -1px 1px 1px rgba(45, 45, 45, 0.6), 2px 2px 3px rgba(0, 0, 0, 0.6);
+                        &:first-child {
+                            z-index: 6;
+                            &:nth-last-child(1) {
+                                left: 42px;
+                            }
+                            &:nth-last-child(2) {
+                                left: 25px;
+                            }
+                            &:nth-last-child(3) {
+                                left: 8px;
+                            }
+                            &:nth-last-child(4) {
+                                left: 0;
+                            }
+                        }
+                        &:nth-child(2) {
+                            z-index: 5;
+                            &:nth-last-child(1) {
+                                right: 20px;
+                            }
+                            &:nth-last-child(2) {
+                                right: 42px;
+                            }
+                            &:nth-last-child(3) {
+                                left: 27px;
+                            }
+                        }
+                        &:nth-child(3) {
+                            z-index: 4;
+                            &:nth-last-child(1) {
+                                right: 9px;
+                            }
+                            &:nth-last-child(2) {
+                                right: 28px;
+                            }
+                        }
+                        &:nth-child(4) {
+                            z-index: 3;
+                            right: 0;
+                        }
+                        &:after {
+                            content: '';
+                            position: absolute;
+                            border-radius: 50%;
+                        }
+                        &.krystallium:after {
+                            width: 34px;
+                            height: 34px;
+                            left: 1px;
+                            top: 1px;
+                            border: solid 1px rgba(200, 200, 200, 0.7);
+                            background-color: #FAFDF5;
+                            background-repeat: no-repeat;
+                            background-size: 25px;
+                            background-position: 5px 3px;
+                        }
+                        &.financier:after {
+
+                        }
+                        &.general:after {
+
+                        }
+                        &.celebrity:after {
+
+                        }
+                        &.worker:after {
+
+                        }
+                    }
+                }
+            }
+        }
+    }
+    .recycling-container {
+        position: absolute;
+        right: 0px;
+        bottom: 61px;
+        height: 48px;
+        width: 53px;
+        .recycling {
+            position: relative;
+            height: 48px;
+            .recycling-circle {
+                position: absolute;
+                left: 0px;
+                top: 0px;
+                height: 48px;
+                width: 47px;
+                border-radius: 50%;
+                background-color: #AFACB0;
+                z-index: 5;
+                box-shadow: 3px 0px 1px rgba(0, 0, 0, 0.6), -1px -1px 1px rgba(255, 255, 255, 0.7);
+                .recycling-circle-inside {
+                    position: absolute;
+                    left: 3px;
+                    top: 3px;
+                    height: 42px;
+                    width: 42px;
+                    border-radius: 50%;
+                    background: radial-gradient(circle at 66% 66%, rgba(255, 255, 255, 1) 54%, rgba(90, 90, 90, 1) 84%);
+                    box-shadow: -1px -1px rgba(50, 50, 50, 0.4);
+                    &:after {
+                        content: '';
+                        position: absolute;
+                        display: inline-block;
+                        left: 7px;
+                        top: 8px;
+                        height: 29px;
+                        width: 28px;
+                        background-size: 174px 29px;
+                        background-image: url(../../../assets/iww/img/iww-production.png);
+                    }
+                }
+            }
+            .recycling-bar {
+                position: absolute;
+                right: 0px;
+                top: 7px;
+                height: 33px;
+                width: 16px;
+                border-top: solid 2px white;
+                border-bottom: solid 3px white;
+                z-index: 3;
+                background-image: url(../../../assets/iww/img/iww-backgrounds.png);
+                &:before {
+                    content: '';
+                    position: absolute;
+                    display: inline-block;
+                    height: 3px;
+                    width: 16px;
+                    z-index: 4;
+                    background: linear-gradient(180deg, rgba(0, 0, 0, 0) 0%, rgba(255, 255, 255, 0.62) 5%, rgba(0, 0, 0, 0) 10%, rgba(0, 0, 0, 0) 75%, rgba(33, 33, 33, 0.6) 100%);
+                }
+                &:after {
+                    content: '';
+                    position: absolute;
+                    right: 0px;
+                    top: 35px;
+                    width: 16px;
+                    height: 1px;
+                    background-color: grey;
+                }
+            }
+            &.material {
+                .recycling-circle-inside:after {
+                    background-position-x: 0;
+                }
+                .recycling-bar {
+                    background-position-x: 0;
+                }
+            }
+            &.energy {
+                .recycling-circle-inside:after {
+                    background-position-x: 145px;
+                }
+                .recycling-bar {
+                    background-position-x: 400px;
+                }
+            }
+            &.science {
+                .recycling-circle-inside:after {
+                    background-position-x: 116px;
+                }
+                .recycling-bar {
+                    background-position-x: 320px;
+                }
+            }
+            &.gold {
+                .recycling-circle-inside:after {
+                    background-position-x: 88px;
+                }
+                .recycling-bar {
+                    background-position-x: 240px;
+                }
+            }
+            &.exploration {
+                .recycling-circle-inside:after {
+                    background-position-x: 58px;
+                }
+                .recycling-bar {
+                    background-position-x: 160px;
+                }
+            }
+        }
+    }
+    .effect-container {
+        .victory-points-container {
+            position: absolute;
+            height: 47px;
+            left: 0px;
+            bottom: 0px;
+            &.fixed {
+                width: 40px;
+            }
+            &.multiplier {
+                width: 100px;
+            }
+            &.double-mulltiplier {
+    
+            }
         }
     }
 }

@@ -1,40 +1,42 @@
 <form [formGroup]="iwwForm">
     <div class="type">
         <h2 i18n>Type</h2>
-        <select id="card-type" formControlName="type">
-            <option *ngFor="let cardType of cardTypes" value="cardType" i18n>{{ cardType }}</option>
+        <select id="card-type" formControlName="cardType">
+            <option *ngFor="let cardType of cardTypes" [value]="cardType" i18n>{{ cardType }}</option>
         </select>
     </div>
     <div class="name">
         <h2 i18n>Name</h2>
-        <input type="text" id="card-name" formControlName="name"></input>
+        <input type="text" id="card-name" formControlName="name"/>
     </div>
     <div class="number-of-copies">
         <h2 i18n>Number of copies</h2>
-        <input type="number" id="number-of-copies" formControlName="numberOfCopies"></input>
+        <input type="number" id="number-of-copies" min="1" max="9" formControlName="numberOfCopies"/>
     </div>
     <div class="costs">
         <h2 i18n>Costs</h2>
         <ng-container *ngFor="let cost of basicCubes | arrayConcat:['krystallium']:tokens">
             <label [for]="cost + '-cost'" i18n>{{cost}} cost:</label>
-            <select [id]="cost + '-cost" [formControlName]="cost + 'Cost">
-                <option *ngFor="let n of 0 | numberSequence:15; let i = index;" value="i" [disabled]="i + totalCost - iwwForm.controls[cost + 'Cost'].value > 15">{{i}}</option>
+            <select [id]="cost + '-cost'" [formControlName]="cost + 'Cost'">
+                <option *ngFor="let n of 0 | numberSequence:15; index as i;" [value]="i"
+                [disabled]="(i|toNumber) + (totalCost|toNumber) - (iwwForm.controls[cost + 'Cost'].value|toNumber) > 15">{{i}}</option>
             </select>
         </ng-container>
     </div>
     <div class="bonuses">
         <h2 i18n>Bonuses</h2>
-        <ng-container *ngFor="let bonus of ['krystallium'] | arrayConcat:tokens:['workers']">
+        <ng-container *ngFor="let bonus of ['krystallium'] | arrayConcat:tokens:['worker']">
             <label [for]="bonus + '-bonus'" i18n>{{bonus}} bonus:</label>
-            <select [id]="bonus + '-bonus" [formControlName]="bonus + 'Bonus'">
-                <option *ngFor="let n of 0 | numberSequence:4; let i = index;" value="i" [disabled]="i + totalBonus - iwwForm.getValue(bonus + 'Bonus') > 4">{{i}}</option>
+            <select [id]="bonus + '-bonus'" [formControlName]="bonus + 'Bonus'">
+                <option *ngFor="let n of 0 | numberSequence:4; index as i;" [value]="i"
+                [disabled]="(i|toNumber) + (totalBonus|toNumber) - (iwwForm.controls[bonus + 'Bonus'].value|toNumber) > 4">{{i}}</option>
             </select>
         </ng-container>
     </div>
     <div class="recycling">
         <h2 i18n>Recycling</h2>
         <select id="recycling" formControlName="recycling">
-            <option *ngFor="let basicCube of basicCubes" value="basicCube" i18n>{{ basicCube }}</option>
+            <option *ngFor="let basicCube of basicCubes" [value]="basicCube" i18n>{{basicCube}}</option>
         </select>
     </div>
     <div class="victory-points">
@@ -60,11 +62,11 @@
     </div>
     <div class="production">
         <h2 i18n>Production</h2>
-        <ng-container *ngFor="let production of basicCubes | arrayConcat:['culture']:['krystallium']:tokens"></ng-container>
+        <ng-container *ngFor="let production of basicCubes | arrayConcat:['culture']:['krystallium']:tokens">
             <label [for]="production + '-production'">{{production}} production:</label>
             <select [id]="production + '-production'" [formControlName]="production + 'Production'">
-                <option *ngFor="for n of -1 | numberSequence:6; let i = index;" value="i"
-                [disabled]="i | absoluteValue + totalCost - iwwForm.controls[production + 'Production'].value>{{i}}"></option>
+                <option *ngFor="let n of (-1 | numberSequence:6); index as i;" [value]="i"
+                [disabled]="((i | absoluteValue) + totalCost - iwwForm.controls[production + 'Production'].value) > 6">{{i}}></option>
             </select>
         </ng-container>
     </div>
@@ -74,20 +76,27 @@
     <div class="card-model"></div>
     <div class="card-name-container">
         <div class="card-name">
-            <span>{{iww.value.name}}</span>
+            <span>{{iwwForm.controls['name'].value}}</span>
         </div>
     </div>
     <div class="nb-card-container">
         <div class="nb-card">
-            <span>{{iww.value.numberOfCopies}}</span>
+            <span>{{iwwForm.controls['numberOfCopies'].value}}</span>
         </div>
     </div>
-    <div class="cost-bar-container" [ngClass]="{'two-bars': totalCost > 9}">
-        <div class="cost-bar">
-            <ng-container *ngFor="let a of [[basicCubes | arrayConcat:['krystallium']], tokens]">
-                <ng-container *ngFor="let cost of a; let i = index">
-                    <div *ngFor="let n of 1 | numberSequence:iwwForm.controls[cost + 'Cost'].value" class="cost"
-                    [ngClass]="{'cube': i === 0, 'token': i = 1, n: true}"></div>
+    <div class="cost-bar-container" [attr.data-total-cost]="totalCost">
+        <div #primaryCostBar class="cost-bar primary">
+            <div *ngIf="totalCost == 0" class="cost"></div>
+            <ng-container *ngFor="let cost of (1 | numberSequence:totalCost)">
+                <ng-container *ngIf="cost | iwwOnFirstBar:totalCost">
+                    <div class="cost" [attr.data-cost-number]="cost" [ngClass]="cost | iwwCostType:iwwForm"></div>
+                </ng-container>
+            </ng-container>
+        </div>
+        <div #secondaryCostBar *ngIf="totalCost > 9" class="cost-bar secondary">
+            <ng-container *ngFor="let cost of (1 | numberSequence:totalCost)">
+                <ng-container *ngIf="!(cost | iwwOnFirstBar:totalCost)">
+                    <div class="cost" [attr.data-cost-number]="cost" [ngClass]="cost | iwwCostType:iwwForm"></div>
                 </ng-container>
             </ng-container>
         </div>
@@ -100,7 +109,7 @@
             <div class="when-built">
                 <div class="when-built-production">
                     <ng-container *ngFor="let bonuses of ['krystallium'] | arrayConcat:tokens:['worker']">
-                        <div *ngFor="let bonus of 1 | arrayConcat(iwwForm.controls[bonuses + 'Bonus'])" class="when-built-bonus" [ngClass]="bonuses"></div>
+                        <div *ngFor="let bonus of 1 | numberSequence:iwwForm.controls[bonuses + 'Bonus'].value" class="when-built-bonus" [ngClass]="bonuses"></div>
                     </ng-container>
                 </div>
                 <div class="when-built-circle"></div>
@@ -108,7 +117,7 @@
         </div>
     </div>
     <div class="recycling-container">
-        <div class="recycling" [ngClass]="iww.value.recycling">
+        <div class="recycling" [ngClass]="iwwForm.controls['recycling'].value">
             <div class="recycling-circle">
                 <div class="recycling-circle-inside"></div>
             </div>
@@ -137,7 +146,7 @@
         <div *ngIf="totalProduction > 0" class="production-container">
             <div class="production">
                 <ng-container *ngFor="let production of basicCubes | arrayConcat:['culture']:['krystallium']:tokens">
-                    <div *ngFor="let p of 1 | numberSequence:iwwForm.controls[production + 'Production'].value | absoluteValue" class="production"
+                    <div *ngFor="let p of (1 | numberSequence:(iwwForm.controls[production + 'Production'].value | absoluteValue))" class="production"
                     [ngClass]="{production: true, 'corruption': iwwForm.controls[production + 'Production'].value < 0}"></div>
                 </ng-container>
             </div>

@@ -1,4 +1,1 @@
-<svg class="structure-svg">
-  <path d="m 0 135 l 65 50 l 4 0 l 10 -185 l 52 0 l 19 254 l 77 72 l 7 0 l 0 -177 l 251 181 l 1 -173 l 203 180 l 0 320 l -68 0 l 0 -87 l -220 0 l 0 87 l -401 0 m 58 -250 l 67 0
-  l 0 63 l -67 0 m 112 -63 l 64 0 l 0 63 l -64 0 m 113 -63 l 56 0 l 0 63 l -56 0 m 103 -63 l 61 0 l 0 63 l -61 0" fill="#595045" fill-rule="evenodd"></path>
-</svg>
+<svg height="657" width="689" class="structure-svg" preserveAspectRatio="xMinYMin" xmlns="http://www.w3.org/2000/svg"><path d="m0 135 65 50h4L79 0h52l19 254 77 72h7V149l251 181 1-173 203 180v320h-68v-87H401v87H0m58-250h67v63H58m112-63h64v63h-64m113-63h56v63h-56m103-63h61v63h-61"fill="#595045" fill-rule="evenodd"/></svg>

@@ -1,12 +1,1 @@
-<svg viewbox="1 1 2000 2000" preserveAspectRatio="xMinYMin">
- <path d="m 27 304 l 35 -60 a 4 8 0 0 0 0 -8 l -23 -75 l -6 0 a 11 16 0 0 1 -11 -16 l 0 -30 a 5 5 0 0 1 -5 -5 l 0 -16 a 5 5 0 0 1 5 -5 a 16 32 0 0 1 1 -51 a 18 16 0 0 0 8 13
- a 19 34 0 0 1 19 -47 c -15 20 40 30  19 85 a 5 5 0 0 1 5 5 l 0 16 a 5 5 0 0 1 -5 5 l 0 34 l 50 74 l 54 20 c -42 -122 126 -115 71 9 l 49 7 l 10 9 l 18 57 l 13 -23 l 63 32 l -26 47
- a 60 30 0 0 1 0 30 l -263 0 l 0 -14 l -29 -10 l -25 -41 l 5 -10" fill="#C4C7D0" fill-rule="evenodd"></path>
-  <polygon points="119 205 168 214 168 200" fill="#C4C7D0"></polygon>
-  <polygon points="124 151 170 190 177 172" fill="#C4C7D0"></polygon>
-  <polygon points="165 114 182 166 198 158" fill="#C4C7D0"></polygon>
-  <polygon points="212 102 200 158 222 158" fill="#C4C7D0"></polygon>
-  <polygon points="259 114 224 158 240 166" fill="#C4C7D0"></polygon>
-  <polygon points="300 151 245 172 252 190" fill="#C4C7D0"></polygon>
-  <polygon points="305 205 254 214 254 200" fill="#C4C7D0"></polygon>
-</svg>
+<svg height="411" width="397" preserveAspectRatio="xMinYMin" xmlns="http://www.w3.org/2000/svg"><path d="m27 304 35-60a4 8 0 0 0 0-8l-23-75h-6a11 16 0 0 1-11-16v-30a5 5 0 0 1-5-5V94a5 5 0 0 1 5-5 16 32 0 0 1 1-51 18 16 0 0 0 8 13A19 34 0 0 1 50 4C35 24 90 34 69 89a5 5 0 0 1 5 5v16a5 5 0 0 1-5 5v34l50 74 54 20c-42-122 126-115 71 9l49 7 10 9 18 57 13-23 63 32-26 47a60 30 0 0 1 0 30H108v-14l-29-10-25-41 5-10"fill="#C4C7D0" fill-rule="evenodd"/><path fill="#C4C7D0" d="m119 205 49 9v-14zm5-54 46 39 7-18zm41-37 17 52 16-8zm47-12-12 56h22zm47 12-35 44 16 8zm41 37-55 21 7 18zm5 54-51 9v-14z"/></svg>
