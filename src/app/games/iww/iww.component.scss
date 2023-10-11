@@ -310,32 +310,59 @@
                             z-index: 3;
                             right: 0;
                         }
-                        &:after {
+                        &:before {
                             content: '';
                             position: absolute;
                             border-radius: 50%;
                         }
-                        &.krystallium:after {
-                            width: 34px;
-                            height: 34px;
+                        &.krystallium {
+                            &:before {
+                                width: 34px;
+                                height: 34px;
+                                left: 1px;
+                                top: 1px;
+                                border: solid 1px rgba(200, 200, 200, 0.7);
+                                background-color: #FAFDF5;
+                            }
+                            &:after {
+                                content: '';
+                                position: absolute;
+                                width: 28px;
+                                height: 29px;
+                                top: 4px;
+                                left: 4px;
+                                background-repeat: no-repeat;
+                                background-size: 168px 28px;
+                                background-position: -139px 1px;
+                                background-image: url(../../../assets/iww/img/iww-production.png);
+                            }
+                        }
+                        &.financier:before {
+                            content: '';
+                            position: absolute;
+                            width: 37px;
+                            height: 37px;
                             left: 1px;
                             top: 1px;
-                            border: solid 1px rgba(200, 200, 200, 0.7);
-                            background-color: #FAFDF5;
-                            background-repeat: no-repeat;
-                            background-size: 25px;
-                            background-position: 5px 3px;
+                            background-image: url(../../../assets/iww/img/iww-tokens.png);
+                            background-size: 75px 37px;
+                            background-position: -2px;
                         }
-                        &.financier:after {
+                        &.general:before {
+                            content: '';
+                            position: absolute;
+                            width: 37px;
+                            height: 37px;
+                            left: 1px;
+                            top: 1px;
+                            background-image: url(../../../assets/iww/img/iww-tokens.png);
+                            background-size: 90px 43px;
+                            background-position: 39px;
+                        }
+                        &.celebrity:before {
 
                         }
-                        &.general:after {
-
-                        }
-                        &.celebrity:after {
-
-                        }
-                        &.worker:after {
+                        &.worker:before {
 
                         }
                     }

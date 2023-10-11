@@ -46,13 +46,13 @@
         <ng-container *ngIf="iwwForm.controls['victoryPoints'].value > 0">
             <label for="multiplier1">First multiplier:</label>
             <select id="multiplier1" formControlName="multiplier1">
-                <option value="null">---</option>
+                <option value="">---</option>
                 <option *ngFor="let multiplierType of cardTypes | arrayConcat:tokens" [value]="multiplierType" i18n>{{ multiplierType }}</option>
             </select>
-            <ng-container *ngIf="iwwForm.controls['multiplier1'].value != null">
+            <ng-container *ngIf="iwwForm.controls['multiplier1'].value != ''">
                 <label for="multiplier2">Second multiplier:</label>
                 <select id="multiplier2" formControlName="multiplier2">
-                    <option value="null">---</option>
+                    <option value="">---</option>
                     <ng-container *ngFor="let multiplierType of cardTypes | arrayConcat:tokens">
                         <option *ngIf="iwwForm.controls['multiplier1'].value != multiplierType" [value]="multiplierType" i18n>{{ multiplierType }}</option>
                     </ng-container>
