@@ -21,11 +21,11 @@ export class IwwComponent implements OnInit {
   totalBonus = 0;
   totalProduction = 0;
 
-  iwwForm: FormGroup = this.fb.group({cardType: this.cardTypes[0], name: new FormControl("", [Validators.required]), numberOfCopies: new FormControl(1, [Validators.min(1)]),
-    materialCost: 0, energyCost: 0, scienceCost: 0, goldCost: 0, explorationCost: 0, krystalliumCost: 0, financierCost: 0, generalCost: 0, celebrityCost: 0, krystalliumBonus: 0,
-    financierBonus: 0, generalBonus: 0, celebrityBonus: 0, workerBonus: 0, recycling: this.basicCubes[0], victoryPoints: 0, multiplier1: '', multiplier2: '',
-    materialProduction: 0, energyProduction: 0, scienceProduction: 0, goldProduction: 0, explorationProduction: 0, krystalliumProduction: 0, cultureProduction: 0,
-    financierProduction: 0, generalProduction: 0, celebrityProduction: 0});
+  iwwForm: FormGroup = this.fb.group({cardType: this.cardTypes[0], name: new FormControl("", [Validators.required]),
+    numberOfCopies: new FormControl(1, [Validators.min(1)]), materialCost: 0, energyCost: 0, scienceCost: 0, goldCost: 0, explorationCost: 0, krystalliumCost: 0,
+    financierCost: 0, generalCost: 0, celebrityCost: 0, krystalliumBonus: 0, financierBonus: 0, generalBonus: 0, celebrityBonus: 0, workerBonus: 0,
+    recycling: this.basicCubes[0], victoryPoints: 0, multiplier1: '', multiplier2: '', materialProduction: 0, energyProduction: 0, scienceProduction: 0, goldProduction: 0,
+    explorationProduction: 0, krystalliumProduction: 0, cultureProduction: 0, financierProduction: 0, generalProduction: 0, celebrityProduction: 0});
 
 
 
@@ -37,8 +37,9 @@ export class IwwComponent implements OnInit {
       this.totalProduction = this.formValuesSum("materialProduction", "energyProduction", "scienceProduction", "goldProduction", "explorationProduction",
         "krystalliumProduction", "cultureProduction", "financierProduction", "generalProduction", "celebrityProduction");
     });
-    this.iwwForm.get("victoryPoints")?.valueChanges.subscribe(v => {if (v == 0) this.iwwForm.get("multiplier1")?.setValue(null)});
-    this.iwwForm.get("multiplier1")?.valueChanges.subscribe(v => {if (v == null) this.iwwForm.get("multiplier2")?.setValue(null)});
+    this.iwwForm.get("victoryPoints")?.valueChanges.subscribe(v => {if (v == 0) this.iwwForm.get("multiplier1")?.setValue('')});
+    this.iwwForm.get("multiplier1")?.valueChanges.subscribe(v => {if (v == '') this.iwwForm.get("multiplier2")?.setValue('')});
+    
     
   }
 

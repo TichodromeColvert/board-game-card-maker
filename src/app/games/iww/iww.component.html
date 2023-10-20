@@ -124,23 +124,24 @@
             <div class="recycling-bar"></div>
         </div>
     </div>
-    <div class="effects-container" [attr.data-points-multipliers]="{'0': iwwForm.controls['multiplier1'].value == null,
-    '1': iwwForm.controls['multiplier1'].value != null && iwwForm.controls['multiplier2'].value == null, '2': iwwForm.controls['multiplier2'].value != null}"
-    [attr.data-production]="totalProduction">
+    <div class="effects-container" [ngClass]="{'no-points': iwwForm.controls['victoryPoints'].value == 0, 'fixed-points': iwwForm.controls['multiplier1'].value == '',
+    'multiplied-points': iwwForm.controls['multiplier1'].value != '' && iwwForm.controls['multiplier2'].value == '',
+    'double-multiplied-points': iwwForm.controls['multiplier2'].value != ''}" [attr.data-production]="totalProduction">
         <div class="victory-points-container">
-            <div *ngIf="iwwForm.controls['victoryPoints'].value != 0" class="victory-points">
+            <div *ngIf="iwwForm.controls['victoryPoints'].value != 0 && iwwForm.controls['victoryPoints'].value != null" class="victory-points">
                 <div class="nb-points-value">
                     <div class="nb-points-container">
                         <div class="inside-text">{{iwwForm.controls['victoryPoints'].value}}</div>
                     </div>
                 </div>
-                <div *ngIf="iwwForm.controls['multiplier1'].value != null" class="victory-points-multiplier">
-                    <div *ngIf="iwwForm.controls['multiplier2'].value == null" class="single-multiplier-symbol" [ngClass="iwwForm.controls['multiplier1'].value"]></div> 
-                    <div *ngIf="iwwForm.controls['multiplier2'].value != null" class="double-multiplier-symbol">
+                <div *ngIf="iwwForm.controls['multiplier1'].value != ''" class="victory-points-multiplier">
+                    <div *ngIf="iwwForm.controls['multiplier2'].value == ''" class="single-multiplier-symbol" [ngClass="iwwForm.controls['multiplier1'].value"]></div> 
+                    <div *ngIf="iwwForm.controls['multiplier2'].value != ''" class="double-multiplier-symbol">
                         <div class="double-multiplier-symbol-left" [ngClass="iwwForm.controls['multiplier1'].value"]></div>
                         <div class="double-multiplier-symbol-right" [ngClass="iwwForm.controls['multiplier2'].value"]></div>
                     </div>
                 </div>
+                <div class="victory-points-gradient"></div>
             </div>
         </div>
         <div *ngIf="totalProduction > 0" class="production-container">
